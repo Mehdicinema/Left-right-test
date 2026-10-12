@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>چپ یا راست؟ آزمون جهت‌گیری سیاسی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2330; --sub:#5C6373; --paper:#F3F4F6; --card:#FFFFFF; --line:#D8DCE3;
+    --left:#B4533C; --left-soft:#F3E1DC; --right:#2E5E8C; --right-soft:#DCE6F0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;line-height:1.9}
+  .wrap{max-width:680px;margin:0 auto;padding:36px 20px 80px}
+  .hero{display:flex;align-items:stretch;gap:0;height:10px;border-radius:5px;overflow:hidden;margin-bottom:28px}
+  .hero span{flex:1}
+  h1{font-size:2.1rem;font-weight:800;line-height:1.35;margin:0 0 10px}
+  h2{font-size:1.2rem;margin:32px 0 10px}
+  p{margin:0 0 12px}
+  .lead{color:var(--sub);font-size:1.05rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;margin:18px 0}
+  button{font:inherit;cursor:pointer}
+  .btn{background:var(--ink);color:#fff;border:0;border-radius:8px;padding:11px 26px;font-weight:700}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  button:focus-visible{outline:3px solid #E0A526;outline-offset:2px}
+  .progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:8px}
+  .progress div{height:100%;background:var(--ink);transition:width .25s}
+  .count{font-size:.85rem;color:var(--sub)}
+  .stmt{font-size:1.3rem;font-weight:700;line-height:1.75;margin:16px 0 22px;min-height:4.5em}
+  .choices{display:grid;gap:8px}
+  .choice{text-align:right;background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 16px;
+    font-weight:500;color:var(--ink)}
+  .choice:hover{border-color:var(--ink)}
+  .choice.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .nav{display:flex;justify-content:space-between;margin-top:18px}
+  .hidden{display:none}
+  .axis{margin:22px 0}
+  .axis-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .axis-name{font-weight:700}
+  .axis-val{font-weight:800;font-size:1.1rem}
+  .track{direction:ltr;position:relative;height:12px;border-radius:6px;margin:10px 0 4px;
+    background:linear-gradient(to right,var(--left),#E7E2DF 50%,var(--right))}
+  .dot{position:absolute;top:50%;width:22px;height:22px;margin-left:-11px;margin-top:-11px;
+    border-radius:50%;background:#fff;border:4px solid var(--ink)}
+  .ends{direction:ltr;display:flex;justify-content:space-between;font-size:.8rem;color:var(--sub)}
+  .map{direction:ltr;position:relative;aspect-ratio:1/1;max-width:420px;margin:12px auto 30px;
+    border:1px solid var(--line);border-radius:8px;overflow:visible;
+    background:
+      linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat,
+      linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat,
+      conic-gradient(from 0deg at 50% 50%, var(--right-soft) 0 90deg, #E9EEF3 90deg 180deg, var(--left-soft) 180deg 270deg, #F1E8E6 270deg 360deg)}
+  .map .pt{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;
+    background:var(--ink);box-shadow:0 0 0 5px rgba(31,35,48,.18)}
+  .map .lab{position:absolute;font-size:.75rem;color:var(--sub);white-space:nowrap}
+  .summary{font-size:1.1rem;font-weight:500}
+  .refs{font-size:.85rem;color:var(--sub);border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+  .refs p{margin-bottom:8px}
+  .refs em{font-style:italic}
+  a{color:var(--right)}
+  @media (max-width:520px){h1{font-size:1.7rem}.stmt{font-size:1.15rem}}
+  @media (prefers-reduced-motion:reduce){.progress div{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero" aria-hidden="true">
+    <span style="background:var(--left)"></span><span style="background:#C9C2BE"></span><span style="background:var(--right)"></span>
+  </div>
+
+  <section id="intro">
+    <h1>چپ یا راست؟</h1>
+    <p class="lead">۲۴ جمله درباره‌ی اقتصاد و جامعه. برای هر کدام بگو چقدر موافق یا مخالفی. جواب درست یا غلط وجود ندارد.</p>
+    <div class="card">
+      <p>نتیجه روی دو محور جدا نشان داده می‌شود:</p>
+      <p><strong>محور اقتصادی:</strong> برابری و نقش دولت در برابر بازار آزاد و مسئولیت فردی.</p>
+      <p><strong>محور اجتماعی-فرهنگی:</strong> آزادی فردی و تغییر در برابر سنت، دین و نظم.</p>
+      <p>خیلی از آدم‌ها در این دو محور یک جا نیستند. مثلاً می‌شود در اقتصاد چپ بود و در فرهنگ محافظه‌کار.</p>
+    </div>
+    <button class="btn" id="go">شروع آزمون</button>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <div class="progress"><div id="bar"></div></div>
+    <div class="count" id="count"></div>
+    <div class="card">
+      <div class="stmt" id="stmt"></div>
+      <div class="choices" id="choices"></div>
+      <div class="nav">
+        <button class="btn ghost" id="back">سؤال قبلی</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="result" class="hidden">
+    <h1>نتیجه‌ی تو</h1>
+    <p class="summary" id="summary"></p>
+
+    <div class="card">
+      <div class="axis" id="axEco"></div>
+      <div class="axis" id="axSoc"></div>
+      <div class="axis" id="axAll"></div>
+      <p class="count">عددها از ۱۰۰- (چپ کامل) تا ۱۰۰+ (راست کامل) هستند.</p>
+    </div>
+
+    <h2>جایگاه تو روی نقشه‌ی دومحوری</h2>
+    <div class="map" id="map">
+      <span class="lab" style="left:50%;top:-24px;transform:translateX(-50%)">راست فرهنگی (سنت‌گرا)</span>
+      <span class="lab" style="left:50%;bottom:-24px;transform:translateX(-50%)">چپ فرهنگی (آزادی‌خواه)</span>
+      <span class="lab" style="left:6px;top:50%;transform:translateY(-130%)">چپ اقتصادی</span>
+      <span class="lab" style="right:6px;top:50%;transform:translateY(-130%)">راست اقتصادی</span>
+      <div class="pt" id="pt" title="جایگاه تو"></div>
+    </div>
+
+    <div class="card">
+      <p><strong>این نتیجه را با احتیاط بخوان.</strong> جمله‌ها بر پایه‌ی چارچوب‌های دانشگاهی نوشته شده‌اند، ولی خود آزمون مثل یک مقیاس علمی اعتبارسنجی نشده است. معنای چپ و راست هم در هر کشور و دوره کمی فرق می‌کند.</p>
+    </div>
+    <button class="btn" id="again">انجام دوباره</button>
+  </section>
+
+  <div class="refs">
+    <p><strong>رفرنس‌ها (برای چارچوب آزمون):</strong></p>
+    <p>Bobbio, Norberto. <em>Left and Right: The Significance of a Political Distinction</em>. Trans. Allan Cameron. Cambridge: Polity Press, 1996.</p>
+    <p>Hooghe, Liesbet, Gary Marks &amp; Carole J. Wilson. "Does Left/Right Structure Party Positions on European Integration?" <em>Comparative Political Studies</em> 35, no. 8 (2002): 965–989.</p>
+    <p>Chapel Hill Expert Survey: <a href="https://www.chesdata.eu" target="_blank" rel="noopener">chesdata.eu</a></p>
+    <p>جمله‌های آزمون نوشته‌ی سازنده‌ی آزمون است.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var Q = [
+    ["دولت باید با مالیات بیشتر بر ثروتمندان، شکاف درآمدی را کم کند.","eco","L"],
+    ["ارزش‌ها و سنت‌های گذشته باید راهنمای اصلی جامعه باشند.","soc","R"],
+    ["بازار آزاد معمولاً منابع را بهتر از دولت تقسیم می‌کند.","eco","R"],
+    ["هر فرد باید آزاد باشد سبک زندگی خودش را انتخاب کند، حتی اگر با عرف جامعه فرق داشته باشد.","soc","L"],
+    ["آموزش و درمان باید عمدتاً رایگان و دولتی باشند.","eco","L"],
+    ["دین باید نقش مهمی در قانون‌گذاری داشته باشد.","soc","R"],
+    ["کسب‌وکارها باید با کمترین مقررات دولتی کار کنند.","eco","R"],
+    ["زن و مرد باید در همه‌ی حقوق قانونی، مثل ارث و طلاق و حضانت، کاملاً برابر باشند.","soc","L"],
+    ["اتحادیه‌های کارگری قوی برای دفاع از حقوق کارگران لازم‌اند.","eco","L"],
+    ["حفظ هویت ملی مهم‌تر از پذیرفتن فرهنگ‌های دیگر است.","soc","R"],
+    ["شرکت‌های دولتی باید خصوصی شوند.","eco","R"],
+    ["مهاجرت در مجموع برای جامعه مفید است.","soc","L"],
+    ["صنایع کلیدی مثل انرژی و آب باید در مالکیت عمومی باشند.","eco","L"],
+    ["برای حفظ نظم جامعه، مجازات‌های سخت‌تر لازم است.","soc","R"],
+    ["مالیات کمتر به رشد اقتصادی و ایجاد شغل کمک می‌کند.","eco","R"],
+    ["زوج‌های همجنس باید حقوق قانونی برابر با دیگران داشته باشند.","soc","L"],
+    ["حداقل دستمزد باید هزینه‌ی یک زندگی آبرومند را پوشش دهد، حتی اگر برای کارفرما گران تمام شود.","eco","L"],
+    ["خانواده‌ی سنتی پایه‌ی جامعه است و باید از آن حمایت ویژه شود.","soc","R"],
+    ["نابرابری درآمد تا حدی طبیعی است و انگیزه‌ی تلاش ایجاد می‌کند.","eco","R"],
+    ["جدایی دین از دولت بهترین شکل حکومت است.","soc","L"],
+    ["حمایت‌های اجتماعی گسترده، مثل یارانه و بیمه‌ی بیکاری، برای کم‌درآمدها ضروری است.","eco","L"],
+    ["آزادی بیان وقتی به مقدسات یا ارزش‌های ملی توهین کند، باید محدود شود.","soc","R"],
+    ["هرکس اصولاً خودش مسئول وضع اقتصادی‌اش است، نه دولت.","eco","R"],
+    ["محیط زیست باید حفظ شود، حتی به قیمت کندتر شدن رشد اقتصادی.","soc","L"]
+  ];
+  var CHOICES = [[2,"کاملاً موافقم"],[1,"موافقم"],[0,"نظری ندارم"],[-1,"مخالفم"],[-2,"کاملاً مخالفم"]];
+  var N = Q.length, cur = 0, ans = new Array(N);
+  var $ = function(id){ return document.getElementById(id); };
+  var fa = function(n){ return String(n).replace(/\d/g,function(d){return "۰۱۲۳۴۵۶۷۸۹"[d];}).replace("-","−"); };
+
+  function show(id){ ["intro","quiz","result"].forEach(function(s){ $(s).classList.toggle("hidden", s!==id); }); window.scrollTo({top:0}); }
+
+  function render(){
+    $("bar").style.width = (cur/N*100)+"%";
+    $("count").textContent = "جمله‌ی " + fa(cur+1) + " از " + fa(N);
+    $("stmt").textContent = Q[cur][0];
+    var box = $("choices"); box.innerHTML = "";
+    CHOICES.forEach(function(c){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "choice" + (ans[cur]===c[0] ? " on" : "");
+      b.textContent = c[1];
+      b.addEventListener("click", function(){ ans[cur] = c[0]; next(); });
+      box.appendChild(b);
+    });
+    $("back").style.visibility = cur===0 ? "hidden" : "visible";
+  }
+
+  function next(){
+    if(cur < N-1){ cur++; render(); } else { result(); }
+  }
+
+  function axis(ax){
+    var t=0, m=0;
+    Q.forEach(function(q,i){ if(q[1]!==ax) return; t += q[2]==="R" ? ans[i] : -ans[i]; m += 2; });
+    return Math.round(t/m*100);
+  }
+
+  function label(s){
+    if(s<=-50) return "چپ قوی";
+    if(s<=-15) return "چپ میانه";
+    if(s<15) return "میانه";
+    if(s<50) return "راست میانه";
+    return "راست قوی";
+  }
+  function side(s){ return s<=-15 ? "چپ" : (s>=15 ? "راست" : "میانه"); }
+
+  function axisHTML(name, s){
+    var pct = (s+100)/2;
+    return '<div class="axis-head"><span class="axis-name">'+name+'</span><span class="axis-val">'+fa(s)+' · '+label(s)+'</span></div>'+
+      '<div class="track"><div class="dot" style="left:'+pct+'%"></div></div>'+
+      '<div class="ends"><span>چپ</span><span>راست</span></div>';
+  }
+
+  function combo(e,s){
+    var a=side(e), b=side(s);
+    if(a===b && a==="میانه") return "در هر دو محور نزدیک میانه هستی.";
+    if(a===b) return "در هر دو محور " + a + " هستی؛ جهت‌گیری‌ات نسبتاً یکدست است.";
+    if(a==="چپ" && b==="راست") return "در اقتصاد چپ و در فرهنگ محافظه‌کار هستی؛ ترکیبی که در جنبش‌های پوپولیستی و مذهبیِ عدالت‌خواه دیده می‌شود.";
+    if(a==="راست" && b==="چپ") return "در اقتصاد طرفدار بازار و در فرهنگ آزادی‌خواه هستی؛ نزدیک به لیبرتارین‌ها یا لیبرال‌های کلاسیک.";
+    return "در اقتصاد " + a + " و در مسائل اجتماعی-فرهنگی " + b + " هستی.";
+  }
+
+  function result(){
+    var e = axis("eco"), s = axis("soc"), all = Math.round((e+s)/2);
+    $("axEco").innerHTML = axisHTML("محور اقتصادی", e);
+    $("axSoc").innerHTML = axisHTML("محور اجتماعی-فرهنگی", s);
+    $("axAll").innerHTML = axisHTML("جمع‌بندی کلی", all);
+    $("summary").textContent = combo(e,s);
+    var pt = $("pt");
+    pt.style.left = ((e+100)/2) + "%";
+    pt.style.top = (50 - s/2) + "%";
+    show("result");
+  }
+
+  $("go").addEventListener("click", function(){ cur=0; ans=new Array(N); show("quiz"); render(); });
+  $("back").addEventListener("click", function(){ if(cur>0){ cur--; render(); } });
+  $("again").addEventListener("click", function(){ cur=0; ans=new Array(N); show("quiz"); render(); });
+})();
+</script>
+</body>
+</html>
